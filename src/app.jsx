@@ -1,8 +1,9 @@
 import React from 'react'
-import './App.css'
 
 function App() {
-  return <>1</>
+  const x = 1
+
+  return <>Hello</>
 }
 
 export default App
