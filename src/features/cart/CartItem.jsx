@@ -1,16 +1,20 @@
+import { formatCurrency } from '../../utils/helpers.js'
+import Button from '../../ui/Button.jsx'
+
 function CartItem({ item }) {
-  const { pizzaId, name, quantity, totalPrice } = item;
+  const { pizzaId, name, quantity, totalPrice } = item
 
   return (
-    <li>
-      <p>
+    <li className='py-3'>
+      <p className='mb-2'>
         {quantity}&times; {name}
       </p>
-      <div>
-        <p>{formatCurrency(totalPrice)}</p>
+      <div className='flex justify-between items-center'>
+        <p className='text-sm font-bold'>{formatCurrency(totalPrice)}</p>
+        <Button type='small'>Delete</Button>
       </div>
     </li>
-  );
+  )
 }
 
-export default CartItem;
+export default CartItem

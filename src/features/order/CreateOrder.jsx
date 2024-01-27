@@ -48,31 +48,30 @@ function CreateOrder() {
   const cart = fakeCart
 
   return (
-    <div>
-      <h2>Ready to order? Let's go!</h2>
+    <div className='py-6 px-4'>
+      <h2 className='text-xl font-semibold mb-8'>Ready to order? Let's go!</h2>
 
       <Form method='POST'>
-        <div>
-          <label>First Name</label>
+        <div className='group'>
+          <label className='w-40'>First&nbsp;Name</label>
           <input type='text' name='customer' required className='input' />
         </div>
 
-        <div>
-          <label>Phone number</label>
-          <div>
-            <input type='tel' name='phone' required className='input' />
-          </div>
-          {formErrors && <p>{formErrors.phone}</p>}
+        <div className='group'>
+          <label className='w-40'>Phone&nbsp;number</label>
+          <input type='tel' name='phone' required className='input' />
+          {/*{formErrors && <p>{formErrors.phone}</p>}*/}
+          <p className='text-tomato bg-red-50 rounded-full px-3 text-xs'>
+            error
+          </p>
         </div>
 
-        <div>
-          <label>Address</label>
-          <div>
-            <input type='text' name='address' required className='input' />
-          </div>
+        <div className='group'>
+          <label className='w-40'>Address</label>
+          <input type='text' name='address' required className='input' />
         </div>
 
-        <div>
+        <div className='mb-12 space-x-2 flex'>
           <input
             type='checkbox'
             name='priority'
@@ -84,9 +83,9 @@ function CreateOrder() {
           <label htmlFor='priority'>Want to yo give your order priority?</label>
         </div>
 
-        <div>
+        <div className='mt-6'>
           <input type='hidden' name='cart' value={JSON.stringify(cart)} />
-          <Button disabled={isSubmitting}>
+          <Button disabled={isSubmitting} type='primary'>
             {isSubmitting ? 'Placing order' : 'Order now'}
           </Button>
         </div>

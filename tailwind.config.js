@@ -2,7 +2,14 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        tomato: '#EC3B25'
+      },
+      fontFamily: {
+        mono: ['Roboto Mono', 'monospace']
+      }
+    }
   },
   plugins: []
 }

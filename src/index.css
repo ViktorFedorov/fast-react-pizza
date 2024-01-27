@@ -7,6 +7,9 @@
     @apply rounded-full border border-stone-300 px-4 py-2 text-sm
     focus:outline-none w-full focus:ring ring-yellow-300 md:px-6 md:py-3
   }
+  .group {
+    @apply mb-5 flex flex-col gap-3 justify-center
+  }
 }
 
 /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
