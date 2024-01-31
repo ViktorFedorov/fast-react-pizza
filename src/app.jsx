@@ -9,6 +9,8 @@ import CreateOrder, {
 import AppLayout from './ui/AppLayout.jsx'
 import Error from './ui/Error'
 
+import './features/user/userSlice.js'
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
