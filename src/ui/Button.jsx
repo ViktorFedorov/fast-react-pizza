@@ -4,7 +4,7 @@ const Button = (props) => {
   const { children, disabled, type } = props
   const styles = {
     base: 'bg-yellow-400 uppercase font-semibold text-stone-800 rounded-full hover:bg-yellow-300 transition-colors duration-300 focus:outline-none focus:ring disabled:cursor-not-allowed ',
-    primary: '  ',
+    primary: 'px-4 py-2',
     small: 'px-6 py-1 text-xs'
   }
 
