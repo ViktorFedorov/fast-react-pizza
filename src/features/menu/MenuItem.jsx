@@ -1,8 +1,26 @@
 import { formatCurrency } from '../../utils/helpers.js'
 import Button from '../../ui/Button.jsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem } from '../cart/cartSlice.js'
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza
+  const dispatch = useDispatch()
+  const { cart } = useSelector((state) => state.cart)
+
+  const handleAddToCart = () => {
+    const newItem = {
+      pizzaId: id,
+      name,
+      quantity: 1,
+      unitPrice,
+      totalPrice: unitPrice * 1
+    }
+
+    dispatch(addItem(newItem))
+  }
+
+  console.log(cart)
 
   return (
     <li className='h-24 flex gap-4 py-2'>
@@ -16,7 +34,9 @@ function MenuItem({ pizza }) {
           {!soldOut ? (
             <div className='flex items-center justify-between'>
               <p className='text-sm font-bold'>{formatCurrency(unitPrice)}</p>
-              <Button type='small'>add to cart</Button>
+              <Button onClick={handleAddToCart} type='small'>
+                add to cart
+              </Button>
             </div>
           ) : (
             <p className='text-sm font-bold text-stone-500'>Sold out</p>
