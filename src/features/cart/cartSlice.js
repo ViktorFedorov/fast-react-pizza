@@ -33,14 +33,31 @@ const cartSlice = createSlice({
     decreaseItemQuantity(state, action) {
       // payload = id
 
-      state.cart = state.cart.map((item) => {
-        if (item.pizzaId === action.payload) {
-          item.quantity--
-          item.totalPrice = item.unitPrice * item.quantity
-          return item
-        }
-        return item
-      })
+      const item = state.cart.find((item) => item.pizzaId === action.payload)
+
+      item.quantity--
+      item.totalPrice = item.quantity * item.unitPrice
+
+      if (item.quantity === 0) {
+        state.cart = state.cart.filter(
+          (item) => item.pizzaId !== action.payload
+        )
+      }
+
+      // state.cart = state.cart.map((item) => {
+      //   if (item.pizzaId === action.payload) {
+      //     item.quantity--
+      //     item.totalPrice = item.unitPrice * item.quantity
+      //
+      //     // удаляем товар из корзины, если количество равно 0
+      //     if (item.quantity === 0) {
+      //       state.cart.filter((item) => item.pizzaId !== action.payload)
+      //     }
+      //
+      //     return item
+      //   }
+      //   return item
+      // })
     },
     clearCart(state, action) {
       state.cart = []
@@ -50,6 +67,7 @@ const cartSlice = createSlice({
 
 export const {
   addItem,
+  deleteItem,
   increaseItemQuantity,
   decreaseItemQuantity,
   clearCart

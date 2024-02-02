@@ -1,28 +1,19 @@
 import { formatCurrency } from '../../utils/helpers.js'
-import Button from '../../ui/Button.jsx'
-import { useDispatch, useSelector } from 'react-redux'
-import { decreaseItemQuantity } from './cartSlice'
+import DeleteItem from './DeleteItem.jsx'
+import UpdateItemQuantity from './UpdateItemQuantity.jsx'
 
 function CartItem({ item }) {
   const { pizzaId, name, quantity, totalPrice } = item
-  // const dispatch = useDispatch()
-  // const cart = useSelector((state) => state.cart.cart)
-  //
-  // console.log(cart)
 
   return (
-    <li className='py-3'>
-      <p className='mb-2'>
+    <li className='py-3 flex items-center gap-10'>
+      <p className='mb-2 grow'>
         {quantity}&times; {name}
       </p>
-      <div className='flex justify-between items-center'>
-        <p className='text-sm font-bold'>{formatCurrency(totalPrice)}</p>
-        <Button
-          onClick={() => dispatch(decreaseItemQuantity(pizzaId))}
-          type='small'
-        >
-          Delete
-        </Button>
+      <p className='text-sm font-bold'>{formatCurrency(totalPrice)}</p>
+      <div className='flex justify-between items-center gap-10'>
+        <UpdateItemQuantity itemId={pizzaId} quantity={quantity} />
+        <DeleteItem pizzaId={pizzaId} />
       </div>
     </li>
   )
